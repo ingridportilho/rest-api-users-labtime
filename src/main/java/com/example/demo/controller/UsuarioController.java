@@ -1,8 +1,8 @@
-package com.example.controller;
+package com.example.demo.controller;
 
-import com.example.model.Usuario;
-import com.example.service.UsuarioService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.demo.model.Usuario;
+import com.example.demo.service.UsuarioServiceImpl;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,12 +11,16 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping(value = "/users")
 
 public class UsuarioController {
 
-    @Autowired
-    private UsuarioService usuarioService;
+   
+    private final UsuarioServiceImpl usuarioService;
+    
+    public UsuarioController(UsuarioServiceImpl usuarioService) {
+    	this.usuarioService = usuarioService;
+    }
 
     @GetMapping
     public ResponseEntity<List<Usuario>> findAll(){
@@ -25,6 +29,7 @@ public class UsuarioController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Optional<Usuario>> findById(@PathVariable int id){
+    	System.out.println("Entrei");
         return ResponseEntity.status(HttpStatus.OK).body(usuarioService.findById(id));
     }
 

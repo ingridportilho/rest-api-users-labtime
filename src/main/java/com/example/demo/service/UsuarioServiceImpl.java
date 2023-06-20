@@ -1,39 +1,41 @@
-package com.example.service;
+package com.example.demo.service;
 
-import com.example.model.Usuario;
-import com.example.repository.UsuarioRepository;
+import com.example.demo.model.Usuario;
+import com.example.demo.repository.UsuarioRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
-public class UsuarioServiceImpl implements UsuarioService{
+@Service
+public class UsuarioServiceImpl{
 
 	@Autowired
     private UsuarioRepository usuarioRepository;
 	
-	@Override
 	public Usuario save(Usuario usuario) {
 		return usuarioRepository.save(usuario);
 	}
 
-	@Override
 	public List<Usuario> findAll() {
 		return usuarioRepository.findAll();
 	}
 
-	@Override
 	public Optional<Usuario> findById(int id) {
-		return usuarioRepository.findById(id);
+		System.out.println("Entrei - service");
+		Optional<Usuario> usuarioBD = usuarioRepository.findById(id);
+		if(usuarioBD.isPresent()) {
+			System.out.println(usuarioBD.get().getCodigo());
+		}
+		return usuarioBD;
 	}
 
-	@Override
 	public Usuario update(Usuario usuario) {
 		return usuarioRepository.save(usuario);
 	}
 
-	@Override
 	public void deleteById(int id) {
 		usuarioRepository.deleteById(id);
 		

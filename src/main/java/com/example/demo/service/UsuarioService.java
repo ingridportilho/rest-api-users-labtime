@@ -1,8 +1,9 @@
-package com.example.service;
+package com.example.demo.service;
 
-import com.example.model.Usuario;
 import java.util.List;
 import java.util.Optional;
+
+import com.example.demo.model.Usuario;
 
 public interface UsuarioService {
 
