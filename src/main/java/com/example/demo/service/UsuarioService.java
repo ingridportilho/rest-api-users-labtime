@@ -3,17 +3,17 @@ package com.example.demo.service;
 import java.util.List;
 import java.util.Optional;
 
-import com.example.demo.model.Usuario;
+import com.example.demo.model.Usuarios;
 
 public interface UsuarioService {
 
-    Usuario save(Usuario usuario);
+    Usuarios save(Usuarios usuario);
 
-    List<Usuario> findAll();
+    List<Usuarios> findAll();
 
-    Optional<Usuario> findById(int id);
+    Optional<Usuarios> findById(int id);
 
-    Usuario update(Usuario usuario);
+    Usuarios update(Usuarios usuario);
 
     void deleteById(int id);
 

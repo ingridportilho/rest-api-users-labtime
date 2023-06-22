@@ -1,6 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.model.Usuario;
+import com.example.demo.model.Usuarios;
 import com.example.demo.repository.UsuarioRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,24 +15,24 @@ public class UsuarioServiceImpl{
 	@Autowired
     private UsuarioRepository usuarioRepository;
 	
-	public Usuario save(Usuario usuario) {
+	public Usuarios save(Usuarios usuario) {
 		return usuarioRepository.save(usuario);
 	}
 
-	public List<Usuario> findAll() {
+	public List<Usuarios> findAll() {
 		return usuarioRepository.findAll();
 	}
 
-	public Optional<Usuario> findById(int id) {
+	public Optional<Usuarios> findById(int id) {
 		System.out.println("Entrei - service");
-		Optional<Usuario> usuarioBD = usuarioRepository.findById(id);
+		Optional<Usuarios> usuarioBD = usuarioRepository.findById(id);
 		if(usuarioBD.isPresent()) {
 			System.out.println(usuarioBD.get().getCodigo());
 		}
 		return usuarioBD;
 	}
 
-	public Usuario update(Usuario usuario) {
+	public Usuarios update(Usuarios usuario) {
 		return usuarioRepository.save(usuario);
 	}
 

@@ -8,22 +8,23 @@ import lombok.Data;
 
 @Data
 @Entity
-public class Usuario {
-
+public class Usuarios {
+	
+	private String nome_completo;
+	private String nome_social;
+	private String data_de_nascimento;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private int codigo;
 	
-	private String nomeCompleto;
-	private String nomeSocial;
-	private String dataDeNascimento;
-	private char sexo;
+	private String sexo;
 	private String email;
 	private String estado;
 	private String municipio;
-	private int numeroDeAcessos;
+	private int numerodeacessos;
 	private String situacao;
-	private String dataDeVinculo;
+	private String data_de_vinculo;
 	
 	public int getCodigo() {
 		return codigo;
@@ -32,27 +33,27 @@ public class Usuario {
 		this.codigo = codigo;
 	}
 	public String getNomeCompleto() {
-		return nomeCompleto;
+		return nome_completo;
 	}
 	public void setNomeCompleto(String nomeCompleto) {
-		this.nomeCompleto = nomeCompleto;
+		this.nome_completo = nomeCompleto;
 	}
 	public String getNomeSocial() {
-		return nomeSocial;
+		return nome_social;
 	}
 	public void setNomeSocial(String nomeSocial) {
-		this.nomeSocial = nomeSocial;
+		this.nome_social = nomeSocial;
 	}
 	public String getDataDeNascimento() {
-		return dataDeNascimento;
+		return data_de_nascimento;
 	}
 	public void setDataDeNascimento(String dataDeNascimento) {
-		this.dataDeNascimento = dataDeNascimento;
+		this.data_de_nascimento = dataDeNascimento;
 	}
-	public char getSexo() {
+	public String getSexo() {
 		return sexo;
 	}
-	public void setSexo(char sexo) {
+	public void setSexo(String sexo) {
 		this.sexo = sexo;
 	}
 	public String getEmail() {
@@ -74,10 +75,10 @@ public class Usuario {
 		this.municipio = municipio;
 	}
 	public int getNumeroDeAcessos() {
-		return numeroDeAcessos;
+		return numerodeacessos;
 	}
 	public void setNumeroDeAcessos(int numeroDeAcessos) {
-		this.numeroDeAcessos = numeroDeAcessos;
+		this.numerodeacessos = numeroDeAcessos;
 	}
 	public String getSituacao() {
 		return situacao;
@@ -86,9 +87,9 @@ public class Usuario {
 		this.situacao = situacao;
 	}
 	public String getDataDeVinculo() {
-		return dataDeVinculo;
+		return data_de_vinculo;
 	}
 	public void setDataDeVinculo(String dataDeVinculo) {
-		this.dataDeVinculo = dataDeVinculo;
+		this.data_de_vinculo = dataDeVinculo;
 	}
 }
