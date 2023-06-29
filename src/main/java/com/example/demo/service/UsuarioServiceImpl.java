@@ -24,8 +24,7 @@ public class UsuarioServiceImpl{
 	}
 
 	public Optional<Usuarios> findById(int id) {
-		Optional<Usuarios> usuarioBD = usuarioRepository.findById(id);
-		return usuarioBD;
+		return usuarioRepository.findById(id);
 	}
 
 	public Usuarios update(Usuarios usuario) {
