@@ -24,11 +24,7 @@ public class UsuarioServiceImpl{
 	}
 
 	public Optional<Usuarios> findById(int id) {
-		System.out.println("Entrei - service");
 		Optional<Usuarios> usuarioBD = usuarioRepository.findById(id);
-		if(usuarioBD.isPresent()) {
-			System.out.println(usuarioBD.get().getCodigo());
-		}
 		return usuarioBD;
 	}
 
