@@ -9,22 +9,19 @@ import lombok.Data;
 @Data
 @Entity
 public class Usuarios {
-	
-	private String nome_completo;
-	private String nome_social;
-	private String data_de_nascimento;
-	
+	private String nomeCompleto;
+	private String nomeSocial;
+	private String dataDeNascimento;
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private int codigo;
-	
 	private String sexo;
 	private String email;
 	private String estado;
 	private String municipio;
-	private int numerodeacessos;
+	private int numeroDeAcessos;
 	private String situacao;
-	private String data_de_vinculo;
+	private String dataDeVinculo;
 	
 	public int getCodigo() {
 		return codigo;
@@ -33,22 +30,22 @@ public class Usuarios {
 		this.codigo = codigo;
 	}
 	public String getNomeCompleto() {
-		return nome_completo;
+		return nomeCompleto;
 	}
 	public void setNomeCompleto(String nomeCompleto) {
-		this.nome_completo = nomeCompleto;
+		this.nomeCompleto = nomeCompleto;
 	}
 	public String getNomeSocial() {
-		return nome_social;
+		return nomeSocial;
 	}
 	public void setNomeSocial(String nomeSocial) {
-		this.nome_social = nomeSocial;
+		this.nomeSocial = nomeSocial;
 	}
 	public String getDataDeNascimento() {
-		return data_de_nascimento;
+		return dataDeNascimento;
 	}
-	public void setDataDeNascimento(String dataDeNascimento) {
-		this.data_de_nascimento = dataDeNascimento;
+	public void setDataDeNascimento(String data_de_nascimento) {
+		this.dataDeNascimento = dataDeNascimento;
 	}
 	public String getSexo() {
 		return sexo;
@@ -75,10 +72,10 @@ public class Usuarios {
 		this.municipio = municipio;
 	}
 	public int getNumeroDeAcessos() {
-		return numerodeacessos;
+		return numeroDeAcessos;
 	}
 	public void setNumeroDeAcessos(int numeroDeAcessos) {
-		this.numerodeacessos = numeroDeAcessos;
+		this.numeroDeAcessos = numeroDeAcessos;
 	}
 	public String getSituacao() {
 		return situacao;
@@ -87,9 +84,9 @@ public class Usuarios {
 		this.situacao = situacao;
 	}
 	public String getDataDeVinculo() {
-		return data_de_vinculo;
+		return dataDeVinculo;
 	}
 	public void setDataDeVinculo(String dataDeVinculo) {
-		this.data_de_vinculo = dataDeVinculo;
+		this.dataDeVinculo = dataDeVinculo;
 	}
 }
