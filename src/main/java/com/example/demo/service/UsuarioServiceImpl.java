@@ -4,6 +4,9 @@ import com.example.demo.model.Usuarios;
 import com.example.demo.repository.UsuarioRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
@@ -21,11 +24,13 @@ public class UsuarioServiceImpl{
 	public Usuarios save(Usuarios usuario) {
 		return usuarioRepository.save(usuario);
 	}
-
 	public List<Usuarios> findAll() {
 		return usuarioRepository.findAll();
 	}
 
+	public Page<Usuarios> findPage(Pageable pageable){
+		return usuarioRepository.findAll(pageable);
+	}
 	public Optional<Usuarios> findById(int id) {
 		return usuarioRepository.findById(id);
 	}

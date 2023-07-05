@@ -4,6 +4,9 @@ import com.example.demo.model.Usuarios;
 import com.example.demo.repository.UsuarioRepository;
 import com.example.demo.service.UsuarioServiceImpl;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -42,6 +45,13 @@ public class UsuarioController {
         }
         return ResponseEntity.status(HttpStatus.OK).body(usuarioService.findAll());
     }
+
+    @GetMapping("/paginacao/{numberPages}/{pageSize}")
+    public Page findPage(@PathVariable int numberPages, @PathVariable int pageSize){
+        Pageable pageable = PageRequest.of(numberPages, pageSize);
+        return usuarioService.findPage(pageable);
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<Optional<Usuarios>> findById(@PathVariable int id){
     	System.out.println("Entrei");
