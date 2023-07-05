@@ -54,7 +54,6 @@ public class UsuarioController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Optional<Usuarios>> findById(@PathVariable int id){
-    	System.out.println("Entrei");
         return ResponseEntity.status(HttpStatus.OK).body(usuarioService.findById(id));
     }
 
