@@ -13,8 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.core.io.ClassPathResource;
 import java.io.File;
 import java.io.IOException;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @RestController
 @RequestMapping(value = "/users")
@@ -31,30 +30,37 @@ public class UsuarioController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Usuarios>> findAll(@RequestParam(value = "nomeCompleto", required = false) String nomeCompleto,
-                                                  @RequestParam(value = "nomeSocial", required = false) String nomeSocial,
-                                                  @RequestParam(value = "email", required = false) String email){
-        if(nomeCompleto != null){
-            return ResponseEntity.status(HttpStatus.OK).body(usuarioRepository.findByNomeCompleto(nomeCompleto));
-        }
-        if(nomeSocial != null){
-            return ResponseEntity.status(HttpStatus.OK).body(usuarioRepository.findByNomeSocial(nomeSocial));
-        }
-        if(email != null){
-            return ResponseEntity.status(HttpStatus.OK).body(usuarioRepository.findByEmail(email));
+    public ResponseEntity<List<Usuarios>> findAll(@RequestParam(value = "filtro", required = false) String filtro){
+        List result = new ArrayList<>();
+        List temp;
+        if(filtro != null){
+            temp = usuarioRepository.findByNomeCompleto(filtro);
+            if(!temp.isEmpty()){
+                result.add(temp);
+            }
+            temp = usuarioRepository.findByNomeSocial(filtro);
+            if(!temp.isEmpty()){
+                result.add(temp);
+            }
+            temp = usuarioRepository.findByEmail(filtro);
+            result = (List<Usuarios>) result;
+            if(!temp.isEmpty()){
+                result.add(temp);
+            }
+            return ResponseEntity.status(HttpStatus.OK).body(result);
         }
         return ResponseEntity.status(HttpStatus.OK).body(usuarioService.findAll());
     }
 
-    @GetMapping("/paginacao/{numberPages}/{pageSize}")
-    public Page findPage(@PathVariable int numberPages, @PathVariable int pageSize){
-        Pageable pageable = PageRequest.of(numberPages, pageSize);
+    @GetMapping("/paginacao")
+    public Page findPage(@RequestParam(value = "numberPage", required = true) int numberPage,
+                         @RequestParam(value = "pageSize", required = true) int pageSize){
+        Pageable pageable = PageRequest.of(numberPage, pageSize);
         return usuarioService.findPage(pageable);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Optional<Usuarios>> findById(@PathVariable int id){
-    	System.out.println("Entrei");
         return ResponseEntity.status(HttpStatus.OK).body(usuarioService.findById(id));
     }
 
